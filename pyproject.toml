@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -23,12 +24,12 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line_length = 100
+line_length = 88
 skip_magic_trailing_comma = true
 
 [tool.isort]
 profile = "black"
-line_length = 100
+line_length = 88
 
 [tool.ruff]
 lint.select = [
@@ -41,5 +42,5 @@ lint.select = [
     "B",   # flake8-bugbear
     "RUF"  # Ruff-specific rules
     ]
-line-length = 100
+line-length = 88
 target-version = "py310"
