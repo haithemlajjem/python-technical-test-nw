@@ -105,7 +105,6 @@ async def add_child_groups(
     if len(child_groups) != len(child_group_ids):
         raise BusinessLogicException(detail="Some child groups not found.")
 
-
     # Add new child groups
     for child in child_groups:
         if child not in group.child_groups:

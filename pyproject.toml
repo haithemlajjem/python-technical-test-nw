@@ -18,6 +18,8 @@ asyncpg = "^0.29.0"
 black = "^24.3.0"
 isort = "^5.13.2"
 ruff = "^0.3.7"
+pytest = "^8.4.1"
+pytest-asyncio = "^1.1.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -44,3 +46,6 @@ lint.select = [
     ]
 line-length = 88
 target-version = "py310"
+
+[tool.pytest.ini_options]
+pythonpath = ["app"]

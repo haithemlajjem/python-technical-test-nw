@@ -6,13 +6,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter(prefix="/sites", tags=["Sites"])
 
+session_dep = Depends(get_session)
+
 
 @router.get("/", response_model=list[SiteResponse])
 async def list_sites(
     country: str | None = Query(None, description="Filter by country (FR or IT)"),
     sort_by: str | None = Query("installation_date", description="Field to sort by"),
     order: str | None = Query("asc", description="Sort order: asc or desc"),
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = session_dep,
 ):
     """
     Retrieve all sites with optional filtering and sorting.
@@ -22,7 +24,7 @@ async def list_sites(
 
 @router.post("/", response_model=SiteResponse, status_code=201)
 async def create_new_site(
-    data: SiteCreate, session: AsyncSession = Depends(get_session)
+    data: SiteCreate, session: AsyncSession = session_dep
 ):
     """
     Create a new site with all business rules applied.
@@ -32,7 +34,7 @@ async def create_new_site(
 
 @router.patch("/{site_id}", response_model=SiteResponse)
 async def update_existing_site(
-    site_id: int, data: SiteUpdate, session: AsyncSession = Depends(get_session)
+    site_id: int, data: SiteUpdate, session: AsyncSession = session_dep
 ):
     """
     Update an existing site with validation and filters.
@@ -42,7 +44,7 @@ async def update_existing_site(
 
 @router.delete("/{site_id}", status_code=204)
 async def delete_existing_site(
-    site_id: int, session: AsyncSession = Depends(get_session)
+    site_id: int, session: AsyncSession = session_dep
 ):
     """
     Delete a site by ID.
