@@ -26,7 +26,7 @@ downgrade:
 	docker exec -it technical-test-api alembic downgrade -1
 
 fmt:
-	poetry run black . && isort .
+	poetry run black . && poetry run isort .
 
 lint:
 	poetry run ruff check .
@@ -36,3 +36,6 @@ lint_fix:
 
 generate_requirements:
 	poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+test:
+	poetry run pytest

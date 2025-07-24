@@ -23,9 +23,7 @@ async def list_sites(
 
 
 @router.post("/", response_model=SiteResponse, status_code=201)
-async def create_new_site(
-    data: SiteCreate, session: AsyncSession = session_dep
-):
+async def create_new_site(data: SiteCreate, session: AsyncSession = session_dep):
     """
     Create a new site with all business rules applied.
     """
@@ -43,9 +41,7 @@ async def update_existing_site(
 
 
 @router.delete("/{site_id}", status_code=204)
-async def delete_existing_site(
-    site_id: int, session: AsyncSession = session_dep
-):
+async def delete_existing_site(site_id: int, session: AsyncSession = session_dep):
     """
     Delete a site by ID.
     """

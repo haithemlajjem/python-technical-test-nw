@@ -1,7 +1,6 @@
 from typing import Any
 
 
-
 def test_list_sites_route(client: Any, monkeypatch: Any) -> None:
     """Test GET /sites returns an empty list."""
 

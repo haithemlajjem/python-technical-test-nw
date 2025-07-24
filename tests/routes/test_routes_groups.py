@@ -2,7 +2,6 @@ import json
 from typing import Any
 
 
-
 def test_list_groups_route(client: Any, monkeypatch: Any) -> None:
     """Test GET /groups returns a list."""
 
@@ -90,7 +89,7 @@ def test_add_child_groups_route(client: Any, monkeypatch: Any) -> None:
 
 
 def test_remove_child_groups_route(client: Any, monkeypatch: Any) -> None:
-    """Test DELETE /groups/{group_id}/child-groups removes children 
+    """Test DELETE /groups/{group_id}/child-groups removes children
     and returns group."""
 
     async def mock_remove_child_groups(

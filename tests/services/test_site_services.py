@@ -104,7 +104,7 @@ async def test_create_site_french_site_already_exists_raises(
     mock_session: MagicMock,
 ) -> None:
     """
-    Test that creating a French site on a conflicting date raises 
+    Test that creating a French site on a conflicting date raises
     BusinessLogicException.
     """
     site_data: dict[str, Any] = {
@@ -132,7 +132,7 @@ async def test_create_site_italian_site_on_weekday_raises(
     mock_session: MagicMock,
 ) -> None:
     """
-    Test that creating an Italian site on a weekday (not weekend) raises 
+    Test that creating an Italian site on a weekday (not weekend) raises
     BusinessLogicException.
     """
     weekday = date(2025, 7, 23)  # Wednesday

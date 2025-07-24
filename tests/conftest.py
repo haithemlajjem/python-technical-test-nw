@@ -24,7 +24,7 @@ def event_loop():
 @pytest.fixture
 def mock_session():
     """
-    Fixture to mock an AsyncSession with execute, add, commit, refresh, 
+    Fixture to mock an AsyncSession with execute, add, commit, refresh,
     and delete methods.
     """
     session = AsyncMock(spec=AsyncSession)

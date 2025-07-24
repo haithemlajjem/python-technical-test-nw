@@ -17,6 +17,7 @@ router = APIRouter(prefix="/groups", tags=["Groups"])
 session_dep = Depends(get_session)
 group_type_query = Query(None, description="Filter groups by type")
 
+
 @router.get("/", response_model=list[GroupResponse])
 async def list_groups(
     group_type: GroupTypeEnum | None = group_type_query,
@@ -33,9 +34,7 @@ async def list_groups(
 
 
 @router.post("/", response_model=GroupResponse, status_code=201)
-async def create_new_group(
-    data: GroupCreate, session: AsyncSession = session_dep
-):
+async def create_new_group(data: GroupCreate, session: AsyncSession = session_dep):
     """
     Create a new group with business logic:
     """
@@ -53,9 +52,7 @@ async def update_existing_group(
 
 
 @router.delete("/{group_id}", status_code=204)
-async def delete_existing_group(
-    group_id: int, session: AsyncSession = session_dep
-):
+async def delete_existing_group(group_id: int, session: AsyncSession = session_dep):
     """
     Delete a group by ID.
     """
@@ -64,9 +61,7 @@ async def delete_existing_group(
 
 @router.post("/{group_id}/child-groups", response_model=GroupResponse)
 async def add_child_groups_endpoint(
-    group_id: int,
-    child_group_ids: list[int],
-    session: AsyncSession = session_dep,
+    group_id: int, child_group_ids: list[int], session: AsyncSession = session_dep
 ):
     """
     Add a child group to a group
@@ -76,9 +71,7 @@ async def add_child_groups_endpoint(
 
 @router.delete("/{group_id}/child-groups", response_model=GroupResponse)
 async def remove_child_groups_endpoint(
-    group_id: int,
-    child_group_ids: list[int],
-    session: AsyncSession = session_dep,
+    group_id: int, child_group_ids: list[int], session: AsyncSession = session_dep
 ):
     """
     Delete a child group from a group
